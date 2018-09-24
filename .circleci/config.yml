@@ -10,10 +10,11 @@ jobs:
       - run:
           name: Build and push Docker image
           command: |
-            docker build -t pmcwhite/circledemo:0.3 .
+            echo 'export TAG=0.3.${CIRCLE_BUILD_NUM}' >> $BASH_ENV
+            docker build -t pmcwhite/circledemo:$TAG .
             echo $DOCKER_PWD | docker login -u $DOCKER_USER --password-stdin
-            docker push pmcwhite/circledemo:0.3
+            docker push pmcwhite/circledemo:$TAG
       - run:
           name: Deploy app to OVH Server via Docker
           command: |
-            ssh -o StrictHostKeyChecking=no pwhite@dkr-02.the-grid.io "/bin/bash ./deploy_app.sh pmcwhite/circledemo:0.3"      
+            ssh -o StrictHostKeyChecking=no pwhite@dkr-02.the-grid.io "/bin/bash ./deploy_app.sh pmcwhite/circledemo:$TAG"      
