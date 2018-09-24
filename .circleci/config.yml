@@ -13,3 +13,7 @@ jobs:
             docker build -t pmcwhite/circledemo:0.1 .
             echo $DOCKER_PWD | docker login -u $DOCKER_USER --password-stdin
             docker push pmcwhite/circledemo:0.1
+      - run:
+          name: Deploy app to OVH Server via Docker
+          command: |
+            ssh -o StrictHostKeyChecking=no pwhite@dkr-02.the-grid.io "/bin/bash ./deploy_app.sh pmcwhite/circledemo:0.1"      
