@@ -12,4 +12,4 @@ jobs:
           command: |
             docker build -t pmcwhite/circledemo:0.1 .
             echo $DOCKER_PWD | docker login -u $DOCKER_USER --password-stdin
-            docker push apmcwhite/circledemo:0.1
+            docker push pmcwhite/circledemo:0.1
