@@ -10,10 +10,10 @@ jobs:
       - run:
           name: Build and push Docker image
           command: |
-            docker build -t pmcwhite/circledemo:0.1 .
+            docker build -t pmcwhite/circledemo:0.2 .
             echo $DOCKER_PWD | docker login -u $DOCKER_USER --password-stdin
-            docker push pmcwhite/circledemo:0.1
+            docker push pmcwhite/circledemo:0.2
       - run:
           name: Deploy app to OVH Server via Docker
           command: |
-            ssh -o StrictHostKeyChecking=no pwhite@dkr-02.the-grid.io "/bin/bash ./deploy_app.sh pmcwhite/circledemo:0.1"      
+            ssh -o StrictHostKeyChecking=no pwhite@dkr-02.the-grid.io "/bin/bash ./deploy_app.sh pmcwhite/circledemo:0.2"      
