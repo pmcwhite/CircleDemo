@@ -5,12 +5,15 @@ jobs:
       - image: circleci/php
     steps:
       - checkout
+      - run:
+          name: Setup Env
+          command: |
+            echo 'export TAG=0.3.${CIRCLE_BUILD_NUM}' >> $BASH_ENV
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
           name: Build and push Docker image
           command: |
-            echo 'export TAG=0.3.${CIRCLE_BUILD_NUM}' >> $BASH_ENV
             docker build -t pmcwhite/circledemo:$TAG .
             echo $DOCKER_PWD | docker login -u $DOCKER_USER --password-stdin
             docker push pmcwhite/circledemo:$TAG
