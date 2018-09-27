@@ -1,3 +1,43 @@
 body {
 	text-align: center;
 }
+
+html {
+	background-image: url("https://www.edo.co/sites/default/files/2017-05/home-hero-0.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+h1, p {
+	color: white;
+	font-family: "Helvetica Neue","Helvetica","Sans Serif";
+}
+
+h1 {
+	margin-top: 50px;
+	font-size: 3rem;
+}
+
+p {
+	font-size: 4rem;
+	font-weight: 100;
+	font-style: italic;
+}
+
+.wrapper{
+	width: 100%;
+}
+
+.logos {
+	width: 960px;
+	margin: 50px auto;
+}
+
+img {
+	width: 400px;
+	float: left;
+	margin: 40px;
+}
+
+#circleci {margin-top:20px;}
